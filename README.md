@@ -1,8 +1,9 @@
 # Prueba WAM
 
 ## Instructions
-install nodejs
-install npm
+```
+install nodejs and npm
+```
 
 ## Install dependencies
 ```
