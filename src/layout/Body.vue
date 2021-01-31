@@ -4,7 +4,12 @@
     <br />
     <div class="body__container body__container--width">
       <MyData v-show="1 == step" @next="next" />
-      <ProductPayment v-show="2 == step" @previous="previous" @next="next" />
+      <ProductPayment
+        v-show="2 == step"
+        :person="person"
+        @previous="previous"
+        @next="next"
+      />
       <Congratulations v-show="3 == step" />
     </div>
   </div>
@@ -27,13 +32,20 @@ export default {
   data: function () {
     return {
       step: 1,
+      person: {
+        name: "",
+        surnames: "",
+      },
     };
   },
   methods: {
     previous() {
       this.step--;
     },
-    next() {
+    next(personData) {
+      if (null !== personData) {
+        this.person = personData;
+      }
       this.step++;
     },
   },

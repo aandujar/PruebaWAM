@@ -50,12 +50,13 @@ import MyButton from "../components/MyButton.vue";
 
 export default {
   name: "ProductPayment",
+  props: { person: { type: Object, required: true } },
   components: {
     MyButton,
   },
   data: function () {
     return {
-      showError: false
+      showError: false,
     };
   },
   methods: {
@@ -64,9 +65,10 @@ export default {
     },
     goNext() {
       fetch("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09", {
-        method: "GET",
+        method: "POST",
+        body: this.person,
       })
-        .then(() => this.$emit("next"))
+        .then(() => this.$emit("next", null))
         .catch(() => this.showErrorMessage());
     },
     showErrorMessage() {

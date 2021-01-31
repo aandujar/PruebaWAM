@@ -7,30 +7,30 @@
     >
     <div class="container center-items flex-column">
       <!-- form -->
-    <div class="flex-row flex-row--centered my-data--full-width">
-      <!-- name -->
-      <div class="flex-column my-data--full-width">
-        <span class="text text--medium flex-row--start">Nombre</span>
-        <input
-          class="my-data__textfield my-data--full-width"
-          type="text"
-          name="Nombre"
-          v-model="person.name"
-        />
+      <div class="flex-row flex-row--centered my-data--full-width">
+        <!-- name -->
+        <div class="flex-column my-data--full-width">
+          <span class="text text--medium flex-row--start">Nombre</span>
+          <input
+            class="my-data__textfield my-data--full-width"
+            type="text"
+            name="Nombre"
+            v-model="person.name"
+          />
+        </div>
       </div>
-    </div>
-    <!-- surnames -->
-    <div class="flex-row flex-row--centered my-data--full-width">
-      <div class="flex-column my-data--full-width">
-        <span class="text text--medium flex-row--start">Apellidos</span>
-        <input
-          class="my-data__textfield my-data--full-width"
-          type="text"
-          name="Apellidos"
-          v-model="person.surnames"
-        />
+      <!-- surnames -->
+      <div class="flex-row flex-row--centered my-data--full-width">
+        <div class="flex-column my-data--full-width">
+          <span class="text text--medium flex-row--start">Apellidos</span>
+          <input
+            class="my-data__textfield my-data--full-width"
+            type="text"
+            name="Apellidos"
+            v-model="person.surnames"
+          />
+        </div>
       </div>
-    </div>
     </div>
     <!-- error message -->
     <transition name="slide-fade">
@@ -65,7 +65,7 @@ export default {
   methods: {
     checkData() {
       if (this.person.name.length > 0 && this.person.surnames.length > 0) {
-        this.$emit("next");
+        this.$emit("next", this.person);
       } else {
         this.showError = true;
         setTimeout(() => {
